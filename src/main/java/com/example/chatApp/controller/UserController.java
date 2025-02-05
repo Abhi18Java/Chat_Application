@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,10 +17,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @MessageMapping("/requestOnlineUsers")
-    @SendTo("/topic/onlineUsers")
-    public ResponseEntity<List<User>> getConnectedUsers() {
-        return ResponseEntity.ok(userService.findConnectedUsers());
+    @GetMapping("/fetch/AllUser")
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.findAllUsers());
     }
 
     @MessageMapping("/user.addUser")

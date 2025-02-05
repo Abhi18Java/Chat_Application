@@ -140,4 +140,18 @@ input::placeholder {
   .login-btn {
     font-size: 1rem; /* Adjust button size */
   }
+  .password-wrapper {
+      position: relative;
+  }
+ .eye {
+     cursor: pointer;
+     transition: filter 0.3s ease, transform 0.3s ease;
+ }
+
+ .eye:hover {
+     filter: brightness(1.5) drop-shadow(0px 0px 8px rgba(0, 150, 255, 0.7));
+     transform: scale(1.1); /* Slight zoom effect */
+     background-color:black;
+ }
+
 }

@@ -6,6 +6,8 @@ public class SignUpDto {
     @Column(unique = true)
     private String userName;
     private String fullName;
+    @Column(unique = true)
+    private String email;
     private String password;
 
     public String getUserName() {
@@ -22,6 +24,14 @@ public class SignUpDto {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

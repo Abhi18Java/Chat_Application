@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <title>Chat App</title>
     <link rel="stylesheet" href="css/chat.css">
 </head>
 <body>
@@ -16,36 +16,48 @@
         <button class="logout-btn" onclick="onLogout()">Logout</button>
     </header>
 
-    <div class="chat-container">
+    <div class="chat-container" id="chat-page">
+        <!-- Online Users Sidebar -->
         <div class="online-users">
-            <h3>Online Users</h3>
+            <button class="add-friend-btn" onclick="openAddFriendModal()">Add Friend</button>
+            <br>
+            <h3>Friend List</h3>
             <ul id="connectedUsers">
-                <!-- Example users -->
-                <li><img src="img/user_icon.png" class="user-avatar"> User 1</li>
-                <li><img src="img/user_icon.png" class="user-avatar"> User 2</li>
+                <!-- Friends will be listed here dynamically -->
             </ul>
         </div>
 
-        <!-- Chat Box Section -->
+        <!-- Chat Box -->
         <div class="chat-box">
             <div class="chat-messages" id="chatMessages">
-                <!-- Chat messages will appear here -->
+                <!-- Messages will appear here -->
             </div>
-            <div class="message-input">
-                <!-- Attachment Button -->
-                <label for="attachmentInput" class="attachment-btn">
-                    📎
-                </label>
+            <div class="message-input" id="messageForm" class="hidden">
+                <!-- Hide this initially until a user is clicked -->
+                <label for="attachmentInput" class="attachment-btn">📎</label>
                 <input type="file" id="attachmentInput" class="attachment-input" />
                 <input type="text" id="messageInput" placeholder="Type your message..." />
+                <button onclick="startVoiceInput()" class="mic-btn"><img src="img/mic.png" alt="Mic" class="mic-img"/></button>
                 <button onclick="sendMessage()" class="send-btn">Send</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Add Friend Modal -->
+<div id="addFriendModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeAddFriendModal()">×</span>
+        <h3>Select Users to Add as Friends</h3>
+        <ul id="allUsersList">
+            <!-- Users list will appear dynamically here -->
+        </ul>
+        <button class="confirm-btn" onclick="confirmFriends()">Confirm</button>
+    </div>
+</div>
+
+<script src="js/chat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script src="js/chat.js"></script>
 </body>
 </html>

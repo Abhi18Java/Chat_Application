@@ -22,9 +22,14 @@
                 <label for="username">Username</label>
                 <input type="text" id="username" placeholder="Enter Username" autocomplete="off" required>
             </div>
-            <div class="form-group">
+            <div class="form-group password-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" autocomplete="off" required>
+                <div class="password-wrapper" style="position: relative;">
+                    <input type="password" id="password" placeholder="Enter Password" autocomplete="off" required>
+                    <i class="eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                        <img src="img/eyebrow.png" width="20" height="20" alt="Show Password">
+                    </i>
+                </div>
             </div>
             <button type="submit" class="register-btn">Sign Up</button>
         </form>

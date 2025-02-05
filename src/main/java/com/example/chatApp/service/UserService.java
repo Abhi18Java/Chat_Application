@@ -71,4 +71,8 @@ public class UserService {
         return repository.findAllByUserNameIn(usernames);
     }
 
+    public List<User> findAllUsers() {
+        return repository.findAll();
+    }
+
 }

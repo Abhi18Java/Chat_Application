@@ -41,3 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.getElementById('togglePassword').addEventListener('click', function() {
+    let passwordField = document.getElementById('password');
+    let icon = this.querySelector('img'); // Ensure we're targeting the img inside the <i>
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.src = 'img/eye.png'; // Make sure this path is correct
+    } else {
+        passwordField.type = 'password';
+        icon.src = 'img/eyebrow.png'; // Make sure this path is correct
+    }
+});
+
+

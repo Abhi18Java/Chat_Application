@@ -51,11 +51,23 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('registerForm').reset();
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 2000);
+            }, 3000);
         })
         .catch(error => {
             // Show only the error message from the API
             alert(error.message);
         });
     });
+});
+document.getElementById('togglePassword').addEventListener('click', function() {
+    let passwordField = document.getElementById('password');
+    let icon = this.querySelector('img'); // Ensure we're targeting the img inside the <i>
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.src = 'img/eye.png'; // Make sure this path is correct
+    } else {
+        passwordField.type = 'password';
+        icon.src = 'img/eyebrow.png'; // Make sure this path is correct
+    }
 });

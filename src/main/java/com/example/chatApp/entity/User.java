@@ -1,6 +1,7 @@
 package com.example.chatApp.entity;
 
 import jakarta.persistence.*;
+import org.modelmapper.internal.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,6 +16,8 @@ public class User implements UserDetails {
     private Integer id;
     @Column(unique = true)
     private String userName;
+    @Column(unique = true)
+    private String email;
     private String fullName;
     private String password;
     private Status status;
@@ -22,12 +25,21 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Integer id, String userName, String fullName, String password, Status status) {
+    public User(Integer id, String userName,String email, String fullName, String password, Status status) {
         this.id = id;
         this.userName = userName;
+        this.email=email;
         this.fullName = fullName;
         this.password = password;
         this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getId() {
@@ -99,4 +111,7 @@ public class User implements UserDetails {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+
+
 }

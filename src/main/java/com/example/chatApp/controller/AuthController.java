@@ -8,10 +8,7 @@ import com.example.chatApp.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthController {
@@ -58,4 +55,22 @@ public class AuthController {
         return ResponseEntity.ok("Logged out");
     }
 
+    @PostMapping("/forgetPassword")
+    public ResponseEntity<?> forgetPassword(@RequestParam String email) {
+        return authService.forgetPassword(email);
+    }
+
+    @PostMapping("/verifyOtp")
+    public ResponseEntity<String> verifyOtp(@RequestParam Integer Otp) {
+        boolean verified = authService.verifyOtp(Otp);
+        if (!verified) {
+            return ResponseEntity.badRequest().body("Invalid otp");
+        }
+        return ResponseEntity.ok().body("Otp Verified");
+    }
+
+    @PostMapping("/resetPassword")
+    public ResponseEntity<String> resetPassword(@RequestParam Integer otp, String newPassword, String confirmPassword) {
+        return authService.resetPassword(otp, newPassword, confirmPassword);
+    }
 }
