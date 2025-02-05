@@ -50,9 +50,38 @@ function connect() {
         return;
     }
 
-    const socket = new SockJS('/ws');
+    const socket = new SockJS('/ws'); // Establish WebSocket connection
     stompClient = Stomp.over(socket);
+
+    // Establish connection and set up WebSocket event listeners
     stompClient.connect({}, onConnected, onError);
+}
+
+function onConnected() {
+    console.log("Connected to WebSocket successfully.");
+
+    // Subscribe to a topic after connecting (e.g., a user-specific topic)
+    stompClient.subscribe(`/topic/messages/${username}`, onMessageReceived);
+
+    // Send a welcome message or some initial data to the server
+    stompClient.send("/app/hello", {}, JSON.stringify({ message: `Hello ${username}` }));
+
+    // Enable UI for messaging once connected
+    messageForm.classList.remove('hidden');
+}
+
+function onError(error) {
+    console.error("WebSocket Error: ", error);
+    reconnectAttempts++;
+
+    // Retry connection after a delay (based on retry count)
+    setTimeout(() => {
+        if (reconnectAttempts < 5) {
+            connect(); // Try reconnecting after a short delay
+        } else {
+            alert("Failed to reconnect after multiple attempts.");
+        }
+    }, reconnectAttempts * 1000); // Exponential backoff
 }
 
 function openAddFriendModal() {
