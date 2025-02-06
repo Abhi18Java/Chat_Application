@@ -28,7 +28,7 @@ document.querySelector('.reset-btn').addEventListener('click', function(event) {
             // Redirect to the verify page after 3 seconds
             setTimeout(() => {
                 window.location.href = 'verify.html';
-            }, 3000);
+            }, 1000);
         } else {
             // Show error message from API
             showError(data.message || 'An error occurred, please try again later.');

@@ -28,12 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(() => {
             localStorage.setItem('username', username);
-
-            alert('Login successfully!!');
-
-            setTimeout(() => {
                 window.location.href = 'chat.html';
-            }, 1000);
         })
         .catch(error => {
             // Handle errors

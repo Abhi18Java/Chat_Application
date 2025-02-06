@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get form values
         const fullName = document.getElementById('fullname').value.trim();
         const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();  // New email field
         const password = document.getElementById('password').value.trim();
 
         // Basic form validation (can be extended as needed)
-        if (!fullName || !username || !password) {
+        if (!fullName || !username || !email || !password) {
             alert("All fields are required.");
             return;
         }
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = {
             fullName: fullName,
             userName: username,
+            email: email,  // Include email in the data
             password: password
         };
 

@@ -302,7 +302,6 @@ function onLogout() {
     })
     .then(() => {
         document.cookie = "token=; Path=/; Max-Age=0;"; // Clear token
-        alert('Logged out successfully!');
         localStorage.removeItem('username');
         window.location.href = 'index.html'; // Redirect after logout
     })
