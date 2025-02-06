@@ -13,15 +13,17 @@
             <img src="img/user_icon.png" alt="User Avatar" class="avatar">
             <span id="username">Loading...</span>
         </div>
+        <div class = "gradient-text" id="userGreeting" style="font-size: 20px; font-weight: bold; margin-top: 10px;"></div>
+
         <button class="logout-btn" onclick="onLogout()">Logout</button>
     </header>
 
     <div class="chat-container" id="chat-page">
         <!-- Online Users Sidebar -->
         <div class="online-users">
-            <button class="add-friend-btn" onclick="openAddFriendModal()">Add Friend</button>
+            <button class="add-friend-btn" onclick="openAddFriendModal()">Add Friend's</button>
             <br>
-            <h3>Friend List</h3>
+            <h3>Friend's List</h3>
             <ul id="connectedUsers">
                 <!-- Friends will be listed here dynamically -->
             </ul>
@@ -30,16 +32,17 @@
         <!-- Chat Box -->
         <div class="chat-box">
             <div class="chat-messages" id="chatMessages">
-                <div id="userGreeting" style="font-size: 20px; font-weight: bold; margin-top: 10px;"></div>
                 <!-- Messages will appear here -->
             </div>
             <div class="message-input" id="messageForm" class="hidden">
                 <!-- Hide this initially until a user is clicked -->
-                <label for="attachmentInput" class="attachment-btn">📎</label>
+               <label for="attachmentInput" class="attachment-btn">
+                    <img class="attachment-btn-img" src="img/attach.png" alt="attachment">-->
+               </label>
                 <input type="file" id="attachmentInput" class="attachment-input" />
                 <input type="text" id="messageInput" placeholder="Type your message..." />
                 <button onclick="startVoiceInput()" class="mic-btn"><img src="img/mic.png" alt="Mic" class="mic-img"/></button>
-                <button onclick="sendMessage()" class="send-btn">Send</button>
+                <button onclick="sendMessage()" class="send-btn"><img  class="send-btn-img" src="img/sendmessage.png"></button>
             </div>
         </div>
     </div>

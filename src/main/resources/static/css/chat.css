@@ -23,7 +23,7 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4b6cb7;
+  background-color: #08cdf55c;
   color: white;
   padding: 15px 20px;
   position: sticky;
@@ -50,14 +50,15 @@ body, html {
 
 /* Logout Button */
 .logout-btn {
-  background-color: #f44336;
-  border: none;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+    background-color: #bb210bd4;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    font-family: monospace;
 }
 
 .logout-btn:hover {
@@ -74,7 +75,7 @@ body, html {
 /* Online Users Sidebar */
 .online-users {
   width: 250px;
-  background-color: #4b6cb7;
+  background-color: #08cdf55c;
   color: white;
   padding: 20px;
   overflow-y: auto;
@@ -86,6 +87,7 @@ body, html {
   font-size: 1.2rem;
   margin-bottom: 20px;
   text-transform: uppercase;
+  font-family:math;
 }
 
 #connectedUsers {
@@ -137,7 +139,7 @@ body, html {
 
 .chat-messages .message .username {
   font-weight: bold;
-  color: #4b6cb7;
+  color: #5cd9f34d;
 }
 
 .chat-messages .message .content {
@@ -158,21 +160,19 @@ body, html {
 }
 
 /* Attachment Button */
-.message-input .attachment-btn {
-  background: linear-gradient(145deg, #6e7dff, #4b6cb7);
+.message-input  {
   border: none;
   color: white;
   padding: 10px;
-  border-radius: 50%;
   cursor: pointer;
   font-size: 1.5rem;
   transition: transform 0.3s ease, background 0.3s ease;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.message-input .attachment-btn:hover {
-  transform: scale(1.1);
-  background: linear-gradient(145deg, #4b6cb7, #6e7dff);
+.attachment-btn-img {
+    height: 30px;
+    width: 30px;
 }
 
 .message-input input[type="file"] {
@@ -187,16 +187,16 @@ body, html {
   border: 1px solid #ddd;
   font-size: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: math;
 }
 
 .message-input input[type="text"]:focus {
   outline: none;
-  border-color: #4b6cb7;
+  border-color: #5cd9f34d;
 }
 
 /* Mic Button */
 .mic-btn {
-  background: #007bff;
   color: white;
   border: none;
   padding: 5px;
@@ -211,23 +211,23 @@ body, html {
 }
 
 .mic-btn img {
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
 }
 
 /* Send Button */
 .message-input .send-btn {
-  background: linear-gradient(145deg, #ff7b7b, #ff4f4f);
   border: none;
-  color: white;
-  padding: 10px 20px;
+  padding: 4px 14px;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1rem;
   transition: transform 0.3s ease, background 0.3s ease;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
-
+.send-btn-img{
+ height: 25px;
+  width: 23px;
+}
 .message-input .send-btn:hover {
   transform: scale(1.1);
   background: linear-gradient(145deg, #ff4f4f, #ff7b7b);
@@ -384,15 +384,16 @@ button.add-btn:hover {
 
 /* Add Friend Button */
 .add-friend-btn {
-  background-color: #4b6cb7;
-  color: white;
+  background-color: #ff7b7b;
+  color: #532e08;
   padding: 8px 16px;
   border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  align-self: flex-end;
+  align-self: flex-start;
+  font-family:math;
 }
 
 .add-friend-btn:hover {
@@ -402,7 +403,7 @@ button.add-btn:hover {
 
 /* Confirm Button */
 .confirm-btn {
-  background-color: #4b6cb7; /* Same as the Add Friend button */
+  background-color: #5cd9f34d; /* Same as the Add Friend button */
   color: white;
   padding: 8px 16px;
   border-radius: 25px;
@@ -422,4 +423,10 @@ button.add-btn:hover {
 .confirm-btn:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+.gradient-text {
+    background: linear-gradient(to right, #915c4f, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
 }
