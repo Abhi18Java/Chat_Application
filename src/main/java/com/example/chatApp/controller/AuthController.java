@@ -55,7 +55,7 @@ public class AuthController {
         return ResponseEntity.ok("Logged out");
     }
 
-    @PostMapping("/forgetPassword")
+    @PostMapping("/forgetPassword/sendOtp")
     public ResponseEntity<?> forgetPassword(@RequestParam String email) {
         return authService.forgetPassword(email);
     }

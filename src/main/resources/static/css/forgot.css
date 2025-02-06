@@ -1,0 +1,162 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #fff; /* White text color for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px; /* Prevents content from touching edges */
+  overflow: hidden; /* Prevents scrollbars */
+}
+
+/* Centering forgot password card */
+.forgot-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Forgot password card styling */
+.forgot-password-card {
+  background-color: #1f1f1f; /* Dark background */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); /* Soft white shadow */
+  width: 400px; /* Adjusted width for better responsiveness */
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+/* Slight zoom effect on hover */
+.forgot-password-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+}
+
+/* Title */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Input fields */
+.form-group {
+  margin-bottom: 25px; /* More spacing */
+  text-align: left;
+}
+
+/* Input with button in a row */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between input and button */
+  flex-wrap: wrap;
+}
+
+label {
+  display: block;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+input {
+  flex: 1; /* Takes up remaining space */
+  padding: 14px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%; /* Ensures full width */
+  margin-top: 8px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #444;
+}
+
+/* Reset Button */
+.reset-btn {
+  width: 100%; /* Full width */
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.reset-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Back to login text */
+.back-to-login {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.back-to-login a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-to-login a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 480px) {
+  .forgot-password-card {
+    width: 90%;
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .reset-btn {
+    font-size: 1rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    width: 100%;
+  }
+  /* Error message styling */
+span {
+    margin-top: 50px; /* Space above the error message */
+    font-size: 0.9rem; /* Smaller font size for the error message */
+    color: red; /* Red color for error messages */
+    text-align: center; /* Center the error message */
+  }
+
+}

@@ -13,12 +13,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  /*margin: 0;*/
 }
 
 /* Container for the login card */
 .login-container {
-  width: 100%;
+  /*width: 100%;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +58,7 @@ h2 {
 
 /* Styling for form group elements */
 .form-group {
+ margin-top: 20px;
   margin-bottom: 15px;
 }
 
@@ -112,7 +113,8 @@ input::placeholder {
 
 /* Register text */
 .register-text {
-  margin-top: 15px;
+text-align:center;
+  margin-top: -10px;
   font-size: 0.9rem;
   color: #ccc; /* Lighter color for register text */
 }
@@ -126,6 +128,23 @@ input::placeholder {
   text-decoration: underline;
 }
 
+/* Forget password */
+
+/* Forgot password */
+.forgot-text {
+  margin-top: 18px; /* Reduced space between forgot password and password */
+  font-size: 0.9rem;
+  color: #ccc; /* Lighter color for text */
+}
+
+.forgot-text a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+}
+
+.forgot-text a:hover {
+  text-decoration: underline;
+}
 /* Responsive styling */
 @media (max-width: 480px) {
   .login-card {

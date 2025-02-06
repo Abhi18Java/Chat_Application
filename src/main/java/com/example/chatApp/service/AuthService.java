@@ -77,7 +77,7 @@ public class AuthService {
     public ResponseEntity<String> forgetPassword(String email) {
         Optional<User> savedEmail = repository.findByEmail(email);
         if (!savedEmail.isPresent()) {
-            throw new RuntimeException("Email not found");
+            return ResponseEntity.badRequest().body("Email Not Found");
         }
         int otp = otpGenerator();
         emailService.sendEmail(email, "Forget Password Otp", otp);
@@ -93,7 +93,7 @@ public class AuthService {
         Otp saveOtp = new Otp();
         saveOtp.setUser(user);
         saveOtp.setOtp(otp);
-        saveOtp.setExpirationDate(LocalDateTime.now().plusMinutes(1000 * 60 * 5));
+        saveOtp.setExpirationDate(LocalDateTime.now().plusMinutes(1000 * 60 * 5)); // 5 min
         saveOtp.setStatus(0);
         otpRepository.save(saveOtp);
     }
