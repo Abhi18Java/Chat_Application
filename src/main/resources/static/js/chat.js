@@ -70,6 +70,19 @@ function onConnected() {
     messageForm.classList.remove('hidden');
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Example: Fetching logged-in user's name (replace with actual logic)
+    let loggedInUser = localStorage.getItem("username") || "Guest"; // Fetch from local storage or API
+
+    // Find the element where the greeting should be displayed
+    let greetingElement = document.getElementById("userGreeting");
+
+    // Update the text with the logged-in user's name
+    if (greetingElement) {
+        greetingElement.textContent = `Hello, ${loggedInUser}!`;
+    }
+});
+
 function onError(error) {
     console.error("WebSocket Error: ", error);
     reconnectAttempts++;
