@@ -152,13 +152,14 @@ input:focus {
     width: 100%;
   }
   .error{
-  margin-top: 20px; }
+  margin-top: -50px;
+    margin-bottom: 50px;
+
+   }
   /* Error message styling */
 span {
-    margin-top: 50px; /* Space above the error message */
     font-size: 0.9rem; /* Smaller font size for the error message */
     color: red; /* Red color for error messages */
     text-align: center; /* Center the error message */
   }
-
 }

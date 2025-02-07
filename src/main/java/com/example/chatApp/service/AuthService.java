@@ -83,7 +83,7 @@ public class AuthService {
         emailService.sendEmail(email, "Forget Password Otp", otp);
         saveOtp(email, otp);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Otp send on email " + email);
+        return ResponseEntity.status(HttpStatus.OK).body("Otp send on email");
     }
 
     public void saveOtp(String email, Integer otp) {

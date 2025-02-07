@@ -10,38 +10,28 @@ document.querySelector('.reset-btn').addEventListener('click', function(event) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email }), // Body should match the API's expectations
+        body: JSON.stringify({ email: email }), // Ensure correct format
     })
     .then(response => {
-        // Check if the response is a valid JSON
-        if (response.ok) {
-            return response.json(); // Parse JSON if valid
-        } else {
-            // If not a valid JSON, treat it as plain text
-            return response.text().then(text => { throw new Error(text); });
-        }
-    })
-    .then(data => {
-        if (data.success) {
-            // Show success message
-            showMessage('OTP sent to your email.');
-            // Redirect to the verify page after 3 seconds
-            setTimeout(() => {
-                window.location.href = 'verify.html';
-            }, 1000);
-        } else {
-            // Show error message from API
-            showError(data.message || 'An error occurred, please try again later.');
-        }
+        return response.text().then(message => {
+            if (response.ok) {
+                showMessage(message); // Show success message
+                setTimeout(() => {
+                    window.location.href = 'verify.html'; // Redirect after 1 second
+                }, 1000);
+            } else {
+                throw new Error(message || 'Something went wrong'); // Handle API error messages
+            }
+        });
     })
     .catch(error => {
-        // Handle network, server errors, or plain text responses (e.g., "Email Not Found")
-        showError(error.message || 'An error occurred, please try again later.');
+        showError(error.message); // Display the API or network error message
     });
 });
 
 // Function to show error message
 function showError(message) {
+    clearMessages();
     const errorElement = document.createElement('span');
     errorElement.style.color = 'red';
     errorElement.textContent = message;
@@ -50,8 +40,15 @@ function showError(message) {
 
 // Function to show success message
 function showMessage(message) {
+    clearMessages();
     const successElement = document.createElement('span');
     successElement.style.color = 'green';
     successElement.textContent = message;
     document.querySelector('.forgot-password-card').appendChild(successElement);
+}
+
+// Function to clear messages before showing new ones
+function clearMessages() {
+    const messageContainer = document.querySelector('.forgot-password-card');
+    messageContainer.querySelectorAll('span').forEach(span => span.remove());
 }
