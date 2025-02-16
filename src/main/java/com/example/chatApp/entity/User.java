@@ -1,6 +1,7 @@
 package com.example.chatApp.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import org.modelmapper.internal.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Builder
 public class User implements UserDetails {
 
     @Id

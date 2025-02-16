@@ -8,64 +8,51 @@
 body {
   font-family: 'Arial', sans-serif;
   background-color: #000000; /* Black background */
-  color: #fff; /* White text color for contrast */
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /*margin: 0;*/
 }
 
-/* Container for the login card */
+/* Login Card */
 .login-container {
-  /*width: 100%;*/
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Style for the login card */
 .login-card {
-  background-color: #1f1f1f; /* Darker background for the form */
-  padding: 30px; /* Spacious padding */
-  border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2); /* White glow shadow */
-  width: 350px; /* Fixed width */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Smooth transition */
-  color: #fff; /* White text inside the card */
+  background-color: #1f1f1f;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  width: 350px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
-/* Hover effect for the login card */
 .login-card:hover {
-  transform: scale(1.02); /* Slight zoom effect */
-  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4); /* Stronger white glow on hover */
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
 }
 
-/* Glow effect for images */
+/* Login Image */
 .login-image {
-  width: 80px; /* Adjust image size */
+  width: 80px;
   margin-bottom: 20px;
-  filter: drop-shadow(0 0 10px #fff); /* White glow effect on the image */
+  filter: drop-shadow(0 0 10px #fff);
 }
 
-/* Title for the login form */
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #fff; /* White text for title */
-}
-
-/* Styling for form group elements */
+/* Form Styling */
 .form-group {
- margin-top: 20px;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
 label {
   display: block;
   font-size: 1rem;
-  color: #fff; /* White labels for contrast */
+  color: #fff;
   margin-bottom: 8px;
 }
 
@@ -74,103 +61,109 @@ input {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #333; /* Dark background for inputs */
+  background-color: #333;
   color: #fff;
   font-size: 1rem;
-  transition: all 0.3s ease; /* Smooth transition */
+  transition: all 0.3s ease;
 }
 
-/* Input focus styling */
 input:focus {
   outline: none;
-  border-color: #007bff; /* Blue border on focus */
-  background-color: #444; /* Slightly lighter background on focus */
+  border-color: #007bff;
+  background-color: #444;
 }
 
-/* Placeholder styling */
 input::placeholder {
-  color: #aaa; /* Light placeholder text */
+  color: #aaa;
 }
 
-/* Button styling */
+/* Login Button */
 .login-btn {
   width: 100%;
   padding: 12px;
-  background-color: #28a745; /* Green login button */
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: all 0.3s ease; /* Smooth transition */
+  transition: all 0.3s ease;
 }
 
 .login-btn:hover {
-  background-color: #218838; /* Darker green on hover */
-  transform: translateY(-2px); /* Button lift effect on hover */
+  background-color: #218838;
+  transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Register text */
-.register-text {
-text-align:center;
-  margin-top: -10px;
+/* Register & Forgot Password */
+.register-text, .forgot-text {
+  text-align: center;
   font-size: 0.9rem;
-  color: #ccc; /* Lighter color for register text */
+  color: #ccc;
 }
 
-.register-text a {
-  color: #007bff; /* Blue link color */
+.register-text a, .forgot-text a {
+  color: #007bff;
   text-decoration: none;
 }
 
-.register-text a:hover {
+.register-text a:hover, .forgot-text a:hover {
   text-decoration: underline;
 }
 
-/* Forget password */
-
-/* Forgot password */
-.forgot-text {
-  margin-top: 18px; /* Reduced space between forgot password and password */
-  font-size: 0.9rem;
-  color: #ccc; /* Lighter color for text */
+/* OAuth Buttons */
+.oauth-buttons {
+  text-align: center;
+  margin-top: 20px;
 }
 
-.forgot-text a {
-  color: #007bff; /* Blue link color */
-  text-decoration: none;
+.oauth-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
 
-.forgot-text a:hover {
-  text-decoration: underline;
+.oauth-btn img {
+  width: 20px;
+  height: 20px;
 }
-/* Responsive styling */
+
+.google-btn {
+  background-color: #db4437;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.google-btn:hover {
+  background-color: #c1351d;
+}
+
+.github-btn {
+  background-color: #333;
+  color: white;
+}
+
+.github-btn:hover {
+  background-color: #24292e;
+}
+
+/* Responsive */
 @media (max-width: 480px) {
   .login-card {
-    width: 90%; /* Full width on smaller screens */
-    padding: 20px; /* Less padding for mobile */
+    width: 90%;
+    padding: 20px;
   }
 
-  h2 {
-    font-size: 1.5rem; /* Slightly smaller title */
+  .login-btn, .oauth-btn {
+    font-size: 1rem;
   }
-
-  .login-btn {
-    font-size: 1rem; /* Adjust button size */
-  }
-  .password-wrapper {
-      position: relative;
-  }
- .eye {
-     cursor: pointer;
-     transition: filter 0.3s ease, transform 0.3s ease;
- }
-
- .eye:hover {
-     filter: brightness(1.5) drop-shadow(0px 0px 8px rgba(0, 150, 255, 0.7));
-     transform: scale(1.1); /* Slight zoom effect */
-     background-color:black;
- }
-
 }

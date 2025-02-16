@@ -15,6 +15,8 @@
         <div class="register-text">
             <span>Don't have an account? <a href="signUp.html">Sign up</a></span>
         </div>
+
+        <!-- Manual Login Form -->
         <form id="loginForm" class="login-form">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -31,12 +33,26 @@
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
+
         <div class="forgot-text">
             <a href="forgotPassword.html">Forgot Password?</a>
         </div>
+
+        <!-- OR Divider -->
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <!-- OAuth2 Login Buttons -->
+        <div class="oauth-buttons">
+            <a href="/oauth2/authorization/google" class="oauth-btn google-login">
+                <img src="img/google-logo.png" width="20" height="20" alt="Google Logo">
+                Login with Google
+            </a>
+        </div>
     </div>
 </div>
+
 <script src="js/login.js"></script>
 </body>
 </html>
-

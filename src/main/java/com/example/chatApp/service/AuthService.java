@@ -1,6 +1,7 @@
 package com.example.chatApp.service;
 
 import com.example.chatApp.dto.LoginDto;
+import com.example.chatApp.dto.LoginResponseDto;
 import com.example.chatApp.dto.SignUpDto;
 import com.example.chatApp.dto.UserDto;
 import com.example.chatApp.entity.Otp;
@@ -8,6 +9,7 @@ import com.example.chatApp.entity.Status;
 import com.example.chatApp.entity.User;
 import com.example.chatApp.repository.OtpRepository;
 import com.example.chatApp.repository.UserRepository;
+import lombok.extern.java.Log;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +38,9 @@ public class AuthService {
     private final JwtService jwtService;
     private final EmailService emailService;
     private final OtpRepository otpRepository;
+    private final UserService userService;
 
-    public AuthService(UserRepository repository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, @Lazy AuthenticationManager authenticationManager, JwtService jwtService, EmailService emailService, OtpRepository otpRepository) {
+    public AuthService(UserRepository repository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, @Lazy AuthenticationManager authenticationManager, JwtService jwtService, EmailService emailService, OtpRepository otpRepository, UserService userService) {
         this.repository = repository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
@@ -45,6 +48,7 @@ public class AuthService {
         this.jwtService = jwtService;
         this.emailService = emailService;
         this.otpRepository = otpRepository;
+        this.userService = userService;
     }
 
     public ResponseEntity<?> signUp(SignUpDto signUpDto) {
@@ -61,17 +65,23 @@ public class AuthService {
         return ResponseEntity.ok(modelMapper.map(savedUser, UserDto.class));
     }
 
-    public String login(LoginDto loginDto) {
-        Authentication authentication;
-        try {
-            authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginDto.getUserName(), loginDto.getPassword())
-            );
-        } catch (BadCredentialsException badCredentialsException) {
-            return null;
-        }
+    public LoginResponseDto login(LoginDto loginDto) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginDto.getUserName(), loginDto.getPassword())
+        );
         User user = (User) authentication.getPrincipal();
-        return jwtService.generateToken(user);
+        String accessToken = jwtService.generateAccessToken(user);
+        String refreshToken = jwtService.generateRefreshToken(user);
+
+        return new LoginResponseDto(user.getId(), accessToken, refreshToken);
+    }
+
+    public LoginResponseDto refreshToken(String refreshToken) {
+        Integer userId = jwtService.getUserIdFromToken(refreshToken);
+        User user = userService.getUserByUserId(userId);
+
+        String accessToken = jwtService.generateAccessToken(user);
+        return new LoginResponseDto(user.getId(), accessToken, refreshToken);
     }
 
     public ResponseEntity<String> forgetPassword(String email) {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
@@ -75,4 +76,15 @@ public class UserService {
         return repository.findAll();
     }
 
+    public User getUserByUserId(Integer userId) {
+       return repository.findById(userId).orElseThrow(()-> new RuntimeException("No user found with this Id"));
+    }
+
+    public User findByEmail(String email) {
+       return repository.findByEmail(email).orElseThrow(RuntimeException::new);
+    }
+
+    public User save(User createdUser) {
+       return repository.save(createdUser);
+    }
 }
