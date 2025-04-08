@@ -33,7 +33,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String path = request.getServletPath();
         // Allow public URLs
-        if ("/".equals(path) || "/signUp".equals(path) || "/login".equals(path)) {
+        if (path.equals("/") || path.equals("/signUp") || path.equals("/login")
+                || path.equals("/forgetPassword/sendOtp") || path.equals("/verifyOtp") || path.equals("/resetPassword")) {
             filterChain.doFilter(request, response);
             return;
         }

@@ -6,7 +6,7 @@ import com.example.chatApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,14 +18,9 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/fetch/AllUser")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.findAllUsers());
-    }
-
-    @MessageMapping("/user.addUser")
-    public String addUser(String username) {
-        userService.addWebSocketUser(username);
-        return username;
     }
 
     @MessageMapping("/user.disconnectUser")

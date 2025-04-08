@@ -8,6 +8,7 @@ import com.example.chatApp.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -38,15 +39,18 @@ public class AuthController {
 
         userService.addWebSocketUser(loginDto.getUserName());
 
-        Cookie cookie = new Cookie("token", token);
-        cookie.setHttpOnly(false);
-        cookie.setPath("/");
-        cookie.setMaxAge(2 * 24 * 60 * 60);
-        response.addCookie(cookie);
-        return ResponseEntity.ok("Login successful");
+        return ResponseEntity.ok(token);
+
+//        Cookie cookie = new Cookie("token", token);
+//        cookie.setHttpOnly(false);
+//        cookie.setPath("/");
+//        cookie.setMaxAge(2 * 24 * 60 * 60);
+//        response.addCookie(cookie);
+//        return ResponseEntity.ok("Login successful");
     }
 
-    @PostMapping("/login/logout")
+    @PostMapping("/logout")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<String> logout(@CookieValue(name = "token", required = false) String token) {
         if (token != null) {
             String username = jwtService.extractUsername(token);

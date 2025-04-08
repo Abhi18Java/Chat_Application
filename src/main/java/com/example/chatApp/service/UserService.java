@@ -36,7 +36,6 @@ public class UserService {
     }
 
 
-    // WebSocket connection established
     public void addWebSocketUser(String username) {
         activeWsUsers.compute(username, (key, count) -> {
             if (count == null) {
