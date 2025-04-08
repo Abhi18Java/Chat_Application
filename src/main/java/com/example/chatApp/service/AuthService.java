@@ -88,7 +88,7 @@ public class AuthService {
 
     public void saveOtp(String email, Integer otp) {
         User user = repository.findByEmail(email)
-                .orElseThrow(() ->new RuntimeException("USER_NOT_FOUND"));
+                .orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
 
         Otp saveOtp = new Otp();
         saveOtp.setUser(user);
@@ -99,14 +99,14 @@ public class AuthService {
     }
 
     public boolean verifyOtp(Integer otp) {
-       Optional<Otp> dbOtp = otpRepository.findByOtp(otp);
-       if (!dbOtp.isPresent()) {
-           throw new RuntimeException("Invalid Otp");
-       }
-       Otp userEnteredOtp = dbOtp.get();
-       userEnteredOtp.setStatus(1);
-       otpRepository.save(userEnteredOtp);
-        return false;
+        Optional<Otp> dbOtp = otpRepository.findByOtp(otp);
+        if (!dbOtp.isPresent()) {
+            throw new RuntimeException("Invalid Otp");
+        }
+        Otp userEnteredOtp = dbOtp.get();
+        userEnteredOtp.setStatus(1);
+        otpRepository.save(userEnteredOtp);
+        return true;
     }
 
     public ResponseEntity<String> resetPassword(Integer otp, String newPassword, String confirmPassword) {
